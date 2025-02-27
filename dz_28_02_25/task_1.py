@@ -12,8 +12,9 @@ def gruppa(graph, node, colors=None, color=0):
     
     return True
 
-def pairs(graph):
+def pairs(graph, n):
     colors = {} # словарь с 'окрашенными' вершинами графа
+    if(n < 2): return False # в двудольном графе не может быть менее двух вершин
     for node in graph:
         if node not in colors: 
             if not gruppa(graph, node, colors):
@@ -33,4 +34,4 @@ for i in range(k):
     if graph.get(pair[1]) == None: graph[pair[1]] = list(pair[0])
     else: graph[pair[1]].append(pair[0])
 
-print(pairs(graph))
+print(pairs(graph, n))
